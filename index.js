@@ -12,17 +12,18 @@ const getData = () => {
                   </div>
                   </div>`;
 
-  fetch("http://www.omdbapi.com/?i=tt3896198&apikey=9584d820&t=" + titleOfMovie)
+  fetch(
+    "https://www.omdbapi.com/?i=tt3896198&apikey=9584d820&t=" + titleOfMovie
+  )
     .then((res) => {
       let data = res.json();
       return data;
     })
     .then((data) => {
-      if(document.querySelector(".NoContent")){
+      if (document.querySelector(".NoContent")) {
         document.querySelector(".NoContent").innerHTML = ``;
       }
       if (data.Error == undefined) {
-        
         let banner = document.createElement("img");
         banner.src = data.Poster;
         let bg = document.querySelector(".bg");
@@ -43,9 +44,9 @@ const getData = () => {
         width: auto;
        }
       }`;
-      let innerbox = document.querySelector(".innerBox");
-      console.log(innerbox);
-      innerbox.style.cssText = ` background-color: unset; color:white;`;
+        let innerbox = document.querySelector(".innerBox");
+        console.log(innerbox);
+        innerbox.style.cssText = ` background-color: unset; color:white;`;
         document.querySelector(".cardBanner").appendChild(banner);
         document.querySelector(".Title").innerHTML =
           `<strong>Title </strong>: ` + data.Title;
